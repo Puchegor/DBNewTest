@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="83.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="newtest.Controllers.NewSubjectController">
+    <children>
+        <Label layoutX="14.0" layoutY="14.0" text="Название предмета: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="14.0" />
+        <TextField fx:id="tfSubject" layoutX="129.0" layoutY="10.0" prefHeight="25.0" prefWidth="460.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
+        <Separator layoutX="14.0" layoutY="48.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0" />
+        <Button fx:id="btnSave" layoutX="437.0" layoutY="59.0" mnemonicParsing="false" onAction="#BtnSaveHandle" text="Сохранить" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="50.0" />
+        <Button fx:id="btnCancel" layoutX="533.0" layoutY="59.0" mnemonicParsing="false" onAction="#BtnCancelHandle" text="Отмена" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="50.0" />
+    </children>
+</AnchorPane>
+

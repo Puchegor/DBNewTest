@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="113.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="newtest.Controllers.NewTopicController">
+    <children>
+        <Label layoutX="14.0" layoutY="23.0" text="Предмет: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="15.0" />
+        <Label layoutX="14.0" layoutY="52.0" text="Новая тема: " AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0" />
+        <ComboBox fx:id="cbSubject" layoutX="89.0" layoutY="19.0" onAction="#OnCbHandle" prefHeight="25.0" prefWidth="419.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+        <TextField fx:id="tfTopic" layoutX="89.0" layoutY="48.0" prefHeight="25.0" prefWidth="419.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0" />
+        <Separator layoutX="14.0" layoutY="82.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="75.0" />
+        <Button fx:id="btnSave" layoutX="389.0" layoutY="103.0" mnemonicParsing="false" onAction="#OnBtnSaveHandle" text="Сохранить" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="80.0" />
+        <Button fx:id="btnCancel" layoutX="454.0" layoutY="103.0" mnemonicParsing="false" onAction="#OnBtnCancelHandle" text="Отмена" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0" />
+    </children>
+</AnchorPane>
