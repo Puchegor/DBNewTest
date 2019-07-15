@@ -26,26 +26,20 @@ public class NewTopicController implements Initializable {
     @FXML
     ComboBox cbSubject;
     private static String cbDefault;
+    private static ObservableList <Item> subjects = FXCollections.observableArrayList();
 
     public static void setDefaultSubject(String subject){
         cbDefault = subject;
     }
 
+    public static void setSubjects (ObservableList<Item> subs){
+        subjects = subs;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            ObservableList <Item> subjects = FXCollections.observableArrayList();
-            ResultSet rst = DB.Select("subjects", null);
-            while (rst.next()){
-                subjects.add(new Item(0, rst.getInt("idSub"), rst.getString("nameSub")));
-            }
             cbSubject.setItems(subjects);
             cbSubject.setValue(cbDefault);
-
-        } catch (SQLException e){
-            Alerts.Error(e.getMessage());
-        }
-
     }
     public void OnCbHandle(ActionEvent actionEvent) {
     }

@@ -10,6 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import newtest.Classes.Alerts;
 import newtest.Classes.DB;
+import newtest.Classes.Item;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -22,41 +23,33 @@ public class NewQuestionController implements Initializable {
     @FXML
     ComboBox cbSubject, cbTopic;
     private static String defaultSubject, defaultTopic;
+    private static ObservableList <Item> subjects = FXCollections.observableArrayList();
+    private static ObservableList<Item> topics = FXCollections.observableArrayList();
 
     public static void setCbSubject (String subject){
         defaultSubject = subject;
     }
+
     public static void setCbTopic (String topic){
         defaultTopic = topic;
     }
+
+    public static void setSubjects (ObservableList<Item> subs){
+        subjects = subs;
+    }
+
+    public static void setTopics (ObservableList<Item> tops){
+        topics = tops;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList <String> subjects = FXCollections.observableArrayList();
-        try {
-            ResultSet rst = DB.Select("subjects", null);
-            while (rst.next())
-                subjects.add(rst.getString("nameSub"));
-            cbSubject.setItems(subjects);
-            cbSubject.setValue(defaultSubject);
-            if (defaultSubject!=null){
-                rst = DB.Select("subjects", "nameSub = \""+cbSubject.getValue()+"\"");
-                TopicRefresh(rst.getInt("idSub"));
-            }
-        } catch (SQLException e){
-            Alerts.Error(e.getMessage());
-        }
-
+        cbSubject.setItems(subjects);
+        cbSubject.setValue(defaultSubject);
     }
 
     private void TopicRefresh (int idSub){
-        ObservableList<String> topics = FXCollections.observableArrayList();
-        try{
-            ResultSet rst = DB.Select("topics", "idSub = "+idSub);
-            while (rst.next())
-                topics.add(rst.getString("nameTopic"));
-        } catch (Exception e){
-            Alerts.Error(e.getMessage());
-        }
+
     }
 
     public void CbSubjectHandle(ActionEvent actionEvent) {
