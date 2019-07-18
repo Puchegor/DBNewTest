@@ -46,6 +46,7 @@ public class NewQuestionController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         cbSubject.setItems(subjects);
         cbSubject.setValue(defaultSubject);
+        cbTopic.setItems(topics);
     }
 
     private void TopicRefresh (int idSub){

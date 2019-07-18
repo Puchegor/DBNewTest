@@ -136,24 +136,13 @@ public class MainWindowController implements Initializable {
         int level = treeView.getTreeItemLevel(selection.getSelectedItem());
             switch (level){
                 case 1:
-                    ObservableList<Item> subs = FXCollections.observableArrayList();
-                    ResultSet rst = DB.Select("subjects", null);
-                    while (rst.next()){
-                        subs.add(new Item(0, rst.getInt("idSub"), rst.getString("nameSub")));
-                    }
-                    NewTopicController.setSubjects(subs);
+                    NewTopicController.setSubjects(getSubjects());
                     String selectedSubject = selection.getSelectedItem().getValue().getName();
                     NewTopicController.setDefaultSubject(selectedSubject);
-                    NewQuestionController.setSubjects(subs);
+                    NewQuestionController.setSubjects(getSubjects());
                     int idSubject = DB.Select("subjects",
                             "nameSub = \""+selectedSubject+"\"").getInt("idSub");
-                    rst = DB.Select("topics", "idSub = \""+idSubject+"\"" );
-                    ObservableList<Item> tops = FXCollections.observableArrayList();
-                    while (rst.next())
-                        tops.add(new Item(rst.getInt("idSub"),
-                                rst.getInt("idTopic"),
-                                rst.getString("nameTopic")));
-                    NewQuestionController.setTopics(tops);
+                    NewQuestionController.setTopics(getTopics(idSubject));
                     NewQuestionController.setCbSubject(selection.getSelectedItem().getValue().getName());
                     break;
                 case 2:
@@ -169,5 +158,33 @@ public class MainWindowController implements Initializable {
         } catch (SQLException e){
             Alerts.Error(e.getMessage());
         }
+    }
+    private ObservableList<Item> getSubjects(){
+        ObservableList subs = FXCollections.observableArrayList();
+        try {
+            ResultSet rst = DB.Select("subjects", null);
+            while (rst.next()) {
+                subs.add(new Item(0, rst.getInt("idSub"), rst.getString("nameSub")));
+            }
+        } catch (SQLException e){
+            Alerts.Error(e.getMessage());
+            return null;
+        }
+        return subs;
+    }
+    private ObservableList<Item>getTopics(int idSub){
+        ObservableList tops = FXCollections.observableArrayList();
+        try {
+            ResultSet rst = DB.Select("topics", "idSub = \""+ idSub+"\"");
+            while (rst.next()){
+                tops.add(new Item (rst.getInt("idSub"),
+                        rst.getInt("idTopic"),
+                        rst.getString("nameTopic")));
+            }
+        }catch (SQLException e){
+            Alerts.Error(e.getMessage());
+            return null;
+        }
+        return tops;
     }
 }
