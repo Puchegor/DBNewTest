@@ -58,26 +58,26 @@ public class MainWindowController implements Initializable {
                 subjects.add(new Item(0, rst.getInt("idSub"),
                         rst.getString("nameSub")));
             }
-            for (Iterator<Item> is = subjects.iterator(); is.hasNext();){
-                TreeItem<Item> sub = new TreeItem<>(is.next());
+            for (Item subject : subjects) {
+                TreeItem<Item> sub = new TreeItem<>(subject);
                 rootItem.getChildren().add(sub);
-                rst = DB.Select("topics", "idSub = "+sub.getValue().getIdOwn());
+                rst = DB.Select("topics", "idSub = " + sub.getValue().getIdOwn());
                 themes.clear();
-                while (rst.next()){
+                while (rst.next()) {
                     themes.add(new Item(rst.getInt("idSub"),
                             rst.getInt("idTopic"), rst.getString("nameTopic")));
                 }
-                for (Iterator<Item> it = themes.iterator(); it.hasNext();){
-                    TreeItem<Item> theme = new TreeItem<>(it.next());
+                for (Item item : themes) {
+                    TreeItem<Item> theme = new TreeItem<>(item);
                     sub.getChildren().add(theme);
-                    rst = DB.Select("questions", "idTopic = "+theme.getValue().getIdOwn());
+                    rst = DB.Select("questions", "idTopic = " + theme.getValue().getIdOwn());
                     questions.clear();
-                    while (rst.next()){
+                    while (rst.next()) {
                         questions.add(new Item(rst.getInt("idTopic"),
                                 rst.getInt("idQuestion"), rst.getString("nameQuestion")));
                     }
-                    for (Iterator<Item> iq = questions.iterator(); iq.hasNext();){
-                        TreeItem<Item> quest = new TreeItem<>(iq.next());
+                    for (Item question : questions) {
+                        TreeItem<Item> quest = new TreeItem<>(question);
                         theme.getChildren().add(quest);
                     }
                 }
@@ -146,11 +146,15 @@ public class MainWindowController implements Initializable {
                     NewQuestionController.setCbSubject(selection.getSelectedItem().getValue().getName());
                     break;
                 case 2:
-                    String subject = (DB.Select("subjects",
-                            "idSub = " +selection.getSelectedItem().getValue().getIdParent()).getString("nameSub"));
-                    NewTopicController.setDefaultSubject(subject);
-                    NewQuestionController.setCbSubject(subject);
-                    NewQuestionController.setCbTopic(selection.getSelectedItem().getValue().getName());
+                    NewTopicController.setSubjects(getSubjects());
+                    NewQuestionController.setSubjects(getSubjects());
+                    String selectedTopic = selection.getSelectedItem().getValue().getName();
+                    int idSub = (DB.Select("topics",
+                            "nameTopic = \""+selectedTopic+"\"")).getInt("idSub");
+                    NewTopicController.setDefaultSubject(DB.Select("subjects",
+                            "idSub = \""+idSub+"\"").getString("nameSub"));
+                    //NewQuestionController.setTopics(getTopics(idSub));
+                    //NewQuestionController.setCbTopic(selectedTopic);
                     break;
                 case 3:
                     break;
