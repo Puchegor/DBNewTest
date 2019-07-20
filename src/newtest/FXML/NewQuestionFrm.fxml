@@ -12,7 +12,7 @@
         <Label layoutX="14.0" layoutY="51.0" text="Тема:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
         <Label layoutX="14.0" layoutY="77.0" text="Вопрос:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
         <ComboBox fx:id="cbSubject" layoutX="54.0" layoutY="18.0" onAction="#CbSubjectHandle" prefWidth="150.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
-        <ComboBox fx:id="cbTopic" layoutX="54.0" layoutY="56.0" onAction="#CbThemeHandle" prefWidth="150.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
+        <ComboBox fx:id="cbTopic" layoutX="54.0" layoutY="56.0" prefWidth="150.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
         <TextArea fx:id="taQuestion" layoutX="54.0" layoutY="86.0" prefHeight="80.0" prefWidth="481.0" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0" />
         <Button fx:id="btnSave" layoutX="419.0" layoutY="188.0" mnemonicParsing="false" onAction="#OnBtnSaveHandle" text="Сохранить" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="80.0" />
         <Button fx:id="btnCancel" layoutX="501.0" layoutY="188.0" mnemonicParsing="false" onAction="#OnCancelHandle" text="Отменить" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />

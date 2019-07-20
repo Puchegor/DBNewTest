@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import newtest.Classes.Alerts;
+import newtest.Classes.Answer;
 import newtest.Classes.DB;
 import newtest.Classes.Item;
 
@@ -20,7 +21,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
@@ -30,6 +30,12 @@ public class MainWindowController implements Initializable {
     MenuItem miAddSubject, miAddTopic, miAddQuestion;
     @FXML
     TreeView treeView;
+    @FXML
+    TableColumn<Answer, String> tcAnswer;
+    @FXML
+    TableColumn<Answer, Boolean> tcIsTrue;
+    @FXML
+    TableView tableView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -159,8 +165,33 @@ public class MainWindowController implements Initializable {
                 case 3:
                     NewTopicController.setSubjects(getSubjects());
                     NewQuestionController.setSubjects(getSubjects());
-                    String selectedQuestion = selection.getSelectedItem().getValue().getName();
-                    //int idTop = (DB.Select())
+                    //String selectedQuestion = selection.getSelectedItem().getValue().getName();
+                    int idTopic = (DB.Select("questions",
+                            "nameQuestion = \""+
+                                    selection.getSelectedItem().getValue().getName()+"\"")).getInt("idTopic");
+                    int idSubj = (DB.Select("topics", "idTopic = \""+
+                            idTopic+"\"")).getInt("idSub");
+                    NewQuestionController.setTopics(getTopics(idSubj));
+                    NewQuestionController.setDefaultSubject(DB.Select("subjects",
+                            "idSub = \""+idSubj+"\"").getString("nameSub"));
+                    NewQuestionController.setDefaultTopic(DB.Select("topics",
+                            "idTopic = \""+idTopic+"\"").getString("nameTopic"));
+                    //---Заполняем таблицу ответов----------------------
+                    ObservableList<Answer> answers = FXCollections.observableArrayList();
+                    ResultSet rst = DB.Select("answers",
+                            "idQuestion = \""+selection.getSelectedItem().getValue().getIdOwn()+"\"");
+                    while (rst.next()){
+                        Boolean isTrue;
+                        if (rst.getInt("isCorrect")!=0)
+                            isTrue = true;
+                        else
+                            isTrue = false;
+                        answers.add(new Answer(rst.getInt("idAnswer"),
+                                rst.getInt("idQuestion"),
+                                rst.getString("nameAnswer"),
+                                isTrue)); //Где-то здесь ошибка!!!!!!
+                    }
+                    tableView.setItems(answers);
                     break;
             }
         } catch (SQLException e){
@@ -180,7 +211,7 @@ public class MainWindowController implements Initializable {
         }
         return subs;
     }
-    public static ObservableList<Item>getTopics(int idSub){
+    public static ObservableList<Item> getTopics(int idSub){
         ObservableList tops = FXCollections.observableArrayList();
         try {
             ResultSet rst = DB.Select("topics", "idSub = \""+ idSub+"\"");

@@ -62,14 +62,17 @@ public class NewQuestionController implements Initializable {
         }
     }
 
-    private void TopicRefresh (int idSub){
-
-    }
-
     public void CbSubjectHandle(ActionEvent actionEvent) {
-    }
-
-    public void CbThemeHandle(ActionEvent actionEvent) {
+        try {
+            int idSubject = (DB.Select("subjects",
+                    "nameSub = \"" + cbSubject.getValue() + "\"")).getInt("idSub");
+            topics.clear();
+            topics = MainWindowController.getTopics(idSubject);
+            cbTopic.setItems(topics);
+            cbTopic.setValue(topics.get(0));
+        } catch (SQLException e){
+            Alerts.Error(e.getMessage());
+        }
     }
 
     public void OnBtnSaveHandle(ActionEvent actionEvent) {
