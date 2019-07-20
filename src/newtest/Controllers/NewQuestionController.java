@@ -9,10 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import newtest.Classes.Alerts;
 import newtest.Classes.DB;
 import newtest.Classes.Item;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class NewQuestionController implements Initializable {
@@ -72,7 +74,12 @@ public class NewQuestionController implements Initializable {
 
     public void OnBtnSaveHandle(ActionEvent actionEvent) {
         if (taQuestion.getText() != null){
-            DB.Insert("questions", "nameQuest", taQuestion.getText());// Здесь ошибка! Исправить!!!!!
+            try {
+                int idTopic = (DB.Select("topics", "nameTopic = \"" + cbTopic.getValue() + "\"")).getInt("idTopic");
+                DB.Insert("questions", "nameQuestion, idTopic",   taQuestion.getText() +  "\", \"" + idTopic);// Здесь ошибка! Исправить!!!!!
+            } catch (SQLException e){
+                Alerts.Error(e.getMessage());
+            }
         }
     }
 

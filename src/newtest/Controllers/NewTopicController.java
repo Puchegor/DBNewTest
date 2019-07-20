@@ -47,8 +47,6 @@ public class NewTopicController implements Initializable {
             cbSubject.setValue(subjects.get(0));
         }
     }
-    public void OnCbHandle(ActionEvent actionEvent) {
-    }
 
     public void OnBtnSaveHandle(ActionEvent actionEvent) {
         if (!tfTopic.getText().isEmpty()){
