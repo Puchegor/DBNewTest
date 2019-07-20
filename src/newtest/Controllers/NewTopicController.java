@@ -38,8 +38,14 @@ public class NewTopicController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (subjects.size()!=0) {
             cbSubject.setItems(subjects);
             cbSubject.setValue(cbDefault);
+        } else {
+            subjects = MainWindowController.getSubjects();
+            cbSubject.setItems(subjects);
+            cbSubject.setValue(subjects.get(0));
+        }
     }
     public void OnCbHandle(ActionEvent actionEvent) {
     }

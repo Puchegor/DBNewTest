@@ -143,7 +143,7 @@ public class MainWindowController implements Initializable {
                     int idSubject = DB.Select("subjects",
                             "nameSub = \""+selectedSubject+"\"").getInt("idSub");
                     NewQuestionController.setTopics(getTopics(idSubject));
-                    NewQuestionController.setCbSubject(selection.getSelectedItem().getValue().getName());
+                    NewQuestionController.setDefaultSubject(selection.getSelectedItem().getValue().getName());
                     break;
                 case 2:
                     NewTopicController.setSubjects(getSubjects());
@@ -153,17 +153,21 @@ public class MainWindowController implements Initializable {
                             "nameTopic = \""+selectedTopic+"\"")).getInt("idSub");
                     NewTopicController.setDefaultSubject(DB.Select("subjects",
                             "idSub = \""+idSub+"\"").getString("nameSub"));
-                    //NewQuestionController.setTopics(getTopics(idSub));
-                    //NewQuestionController.setCbTopic(selectedTopic);
+                    NewQuestionController.setTopics(getTopics(idSub));
+                    NewQuestionController.setDefaultTopic(selectedTopic);
                     break;
                 case 3:
+                    NewTopicController.setSubjects(getSubjects());
+                    NewQuestionController.setSubjects(getSubjects());
+                    String selectedQuestion = selection.getSelectedItem().getValue().getName();
+                    //int idTop = (DB.Select())
                     break;
             }
         } catch (SQLException e){
             Alerts.Error(e.getMessage());
         }
     }
-    private ObservableList<Item> getSubjects(){
+    public static ObservableList<Item> getSubjects(){
         ObservableList subs = FXCollections.observableArrayList();
         try {
             ResultSet rst = DB.Select("subjects", null);
@@ -176,7 +180,7 @@ public class MainWindowController implements Initializable {
         }
         return subs;
     }
-    private ObservableList<Item>getTopics(int idSub){
+    public static ObservableList<Item>getTopics(int idSub){
         ObservableList tops = FXCollections.observableArrayList();
         try {
             ResultSet rst = DB.Select("topics", "idSub = \""+ idSub+"\"");
