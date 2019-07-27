@@ -3,19 +3,19 @@ package newtest.Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import newtest.Classes.Alerts;
-import newtest.Classes.Answer;
-import newtest.Classes.DB;
-import newtest.Classes.Item;
+import javafx.util.Callback;
+import newtest.Classes.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +35,13 @@ public class MainWindowController implements Initializable {
     @FXML
     TableColumn<Answer, Boolean> tcIsTrue;
     @FXML
-    TableView tableView;
+    TableView<Answer> tableView;
+    @FXML
+    TextArea taNewAnswer;
+    @FXML
+    CheckBox cbIsTrue;
+    @FXML
+    Button btnAddAnswer, btnDelete;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,6 +50,10 @@ public class MainWindowController implements Initializable {
         else
             lbStatus.setText("Ошибка соединения с базой данных");
         buildTree();
+        taNewAnswer.setWrapText(true);
+        taNewAnswer.setDisable(true);
+        btnAddAnswer.setDisable(true);
+        cbIsTrue.setDisable(true);
     }
 // --------Нажатие кнопки Exit------------
     public void OnBtnExitHandle(ActionEvent actionEvent) {
@@ -51,7 +61,7 @@ public class MainWindowController implements Initializable {
     }
 
     //-----Построение дерева----------
-    private void buildTree(){
+    public void buildTree(){
         ObservableList<Item> subjects = FXCollections.observableArrayList();
         ObservableList<Item> themes = FXCollections.observableArrayList();
         ObservableList<Item> questions = FXCollections.observableArrayList();
@@ -61,7 +71,7 @@ public class MainWindowController implements Initializable {
             TreeItem<Item> rootItem = new TreeItem<>();
             rootItem.setExpanded(true);
             while (rst.next()){
-                subjects.add(new Item(0, rst.getInt("idSub"),
+                subjects.add(new Item(0, rst.getInt("idSub"), "subjects",
                         rst.getString("nameSub")));
             }
             for (Item subject : subjects) {
@@ -71,7 +81,7 @@ public class MainWindowController implements Initializable {
                 themes.clear();
                 while (rst.next()) {
                     themes.add(new Item(rst.getInt("idSub"),
-                            rst.getInt("idTopic"), rst.getString("nameTopic")));
+                            rst.getInt("idTopic"), "topics", rst.getString("nameTopic")));
                 }
                 for (Item item : themes) {
                     TreeItem<Item> theme = new TreeItem<>(item);
@@ -80,7 +90,8 @@ public class MainWindowController implements Initializable {
                     questions.clear();
                     while (rst.next()) {
                         questions.add(new Item(rst.getInt("idTopic"),
-                                rst.getInt("idQuestion"), rst.getString("nameQuestion")));
+                                rst.getInt("idQuestion"), "questions",
+                                rst.getString("nameQuestion")));
                     }
                     for (Item question : questions) {
                         TreeItem<Item> quest = new TreeItem<>(question);
@@ -90,6 +101,13 @@ public class MainWindowController implements Initializable {
             }
             treeView.setRoot(rootItem);
             treeView.setShowRoot(false);
+            treeView.setEditable(true);
+            treeView.setCellFactory(new Callback<TreeView<Item>, TreeCell<Item>>() {
+                @Override
+                public TreeCell<Item> call(TreeView<Item> param) {
+                    return new textFieldTreeCell();
+                }
+            });
         }
         catch (SQLException e){
             Alerts.Error(e.getMessage());
@@ -150,6 +168,9 @@ public class MainWindowController implements Initializable {
                             "nameSub = \""+selectedSubject+"\"").getInt("idSub");
                     NewQuestionController.setTopics(getTopics(idSubject));
                     NewQuestionController.setDefaultSubject(selection.getSelectedItem().getValue().getName());
+                    taNewAnswer.setDisable(true);
+                    btnAddAnswer.setDisable(true);
+                    cbIsTrue.setDisable(true);
                     break;
                 case 2:
                     NewTopicController.setSubjects(getSubjects());
@@ -161,8 +182,14 @@ public class MainWindowController implements Initializable {
                             "idSub = \""+idSub+"\"").getString("nameSub"));
                     NewQuestionController.setTopics(getTopics(idSub));
                     NewQuestionController.setDefaultTopic(selectedTopic);
+                    taNewAnswer.setDisable(true);
+                    btnAddAnswer.setDisable(true);
+                    cbIsTrue.setDisable(true);
                     break;
                 case 3:
+                    taNewAnswer.setDisable(false);
+                    btnAddAnswer.setDisable(false);
+                    cbIsTrue.setDisable(false);
                     NewTopicController.setSubjects(getSubjects());
                     NewQuestionController.setSubjects(getSubjects());
                     //String selectedQuestion = selection.getSelectedItem().getValue().getName();
@@ -189,9 +216,25 @@ public class MainWindowController implements Initializable {
                         answers.add(new Answer(rst.getInt("idAnswer"),
                                 rst.getInt("idQuestion"),
                                 rst.getString("nameAnswer"),
-                                isTrue)); //Где-то здесь ошибка!!!!!!
+                                isTrue));
                     }
                     tableView.setItems(answers);
+                    tableView.setEditable(true);
+                    tcAnswer.setCellValueFactory(new PropertyValueFactory<Answer, String>("Answer"));
+                    tcAnswer.setCellFactory(TextFieldTableCell.forTableColumn());
+                    tcAnswer.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Answer, String>>() {
+                        @Override
+                        public void handle(TableColumn.CellEditEvent<Answer, String> event) {
+                            ((Answer)event.getTableView().getItems().get(event.getTablePosition().getRow())
+                            ).setAnswer(event.getNewValue());
+                            DB.Update("answers",
+                                    "nameAnswer = \""+event.getNewValue()+"\"",
+                                    "idAnswer = "+ event.getTableView().getItems().get(event.getTablePosition(
+                                    ).getRow()).getIdAnswer());
+                        }
+                    });
+                    tcIsTrue.setCellValueFactory(new PropertyValueFactory<Answer, Boolean>("isTrue"));
+                    //tcIsTrue.setCellFactory(CheckBoxTableCell.forTableColumn());
                     break;
             }
         } catch (SQLException e){
@@ -203,7 +246,8 @@ public class MainWindowController implements Initializable {
         try {
             ResultSet rst = DB.Select("subjects", null);
             while (rst.next()) {
-                subs.add(new Item(0, rst.getInt("idSub"), rst.getString("nameSub")));
+                subs.add(new Item(0, rst.getInt("idSub"), "subjects",
+                        rst.getString("nameSub")));
             }
         } catch (SQLException e){
             Alerts.Error(e.getMessage());
@@ -217,7 +261,7 @@ public class MainWindowController implements Initializable {
             ResultSet rst = DB.Select("topics", "idSub = \""+ idSub+"\"");
             while (rst.next()){
                 tops.add(new Item (rst.getInt("idSub"),
-                        rst.getInt("idTopic"),
+                        rst.getInt("idTopic"), "topics",
                         rst.getString("nameTopic")));
             }
         }catch (SQLException e){
@@ -225,5 +269,54 @@ public class MainWindowController implements Initializable {
             return null;
         }
         return tops;
+    }
+
+    public void onAddAnswerHandle(ActionEvent actionEvent) {
+        MultipleSelectionModel<TreeItem<Item>> selection = treeView.getSelectionModel();
+        int idAnswer = selection.getSelectedItem().getValue().getIdOwn();
+        int isTrue;
+        if (cbIsTrue.isSelected())
+            isTrue = 1;
+        else
+            isTrue = 0;
+        DB.Insert("Answers",
+                "nameAnswer, idQuestion, isCorrect",
+                taNewAnswer.getText()+"\", \""+idAnswer+"\" ,\""+isTrue);
+        taNewAnswer.clear();
+        cbIsTrue.setSelected(false);
+    }
+
+    public void OnDeleteHandle(ActionEvent actionEvent) {
+        MultipleSelectionModel<TreeItem<Item>> selection = treeView.getSelectionModel();
+        int level = treeView.getTreeItemLevel(selection.getSelectedItem());
+        switch (level){
+            case 1:
+                if (!selection.getSelectedItem().getChildren().isEmpty())
+                    Alerts.Warning("Данный предмет имеет темы",
+                            "Для продолжения необходимо удалить темы");
+                else
+                    if (Alerts.Confirmation(selection.getSelectedItem().getValue().getName()))
+                        DB.Delete("subjects",
+                                "idSub",
+                                selection.getSelectedItem().getValue().getIdOwn());
+                break;
+            case 2:
+                if (!selection.getSelectedItem().getChildren().isEmpty())
+                    Alerts.Warning("Данная тема имеет вопросы",
+                            "Для продолжения необходимо удалить вопросы");
+                else
+                    if(Alerts.Confirmation(selection.getSelectedItem().getValue().getName()))
+                        DB.Delete("topics", "idTopic", selection.getSelectedItem().getValue().getIdOwn());
+                break;
+            case 3:
+                if(Alerts.Confirmation(selection.getSelectedItem().getValue().getName())){
+                    int idQuestion = selection.getSelectedItem().getValue().getIdOwn();
+                    DB.Delete("answers", "idQuestion", idQuestion);
+                    DB.Delete("questions", "idQuestion", idQuestion);
+                }
+                break;
+
+        }
+        buildTree();
     }
 }

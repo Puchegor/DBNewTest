@@ -79,4 +79,20 @@ public class DB {
             Alerts.Error (e.getMessage());
         }
     }
+    public static void Update (String tableName, String updates, String Condition){
+        try {
+            String sql = "UPDATE "+tableName+" SET "+updates+" WHERE "+Condition;
+            statement.executeUpdate(sql);
+        }catch (SQLException e){
+            Alerts.Error(e.getMessage());
+        }
+    }
+    public static void Delete (String table, String field, int id){
+        try {
+            String sql = "DELETE FROM "+table+" WHERE "+field+" = "+id;
+            statement.executeUpdate(sql);
+        } catch (SQLException e){
+            Alerts.Error(e.getMessage());
+        }
+    }
 }

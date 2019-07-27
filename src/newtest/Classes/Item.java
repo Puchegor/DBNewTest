@@ -6,12 +6,14 @@ import javafx.beans.property.StringProperty;
 public class Item {
     private int idParent;
     private int idOwn;
+    private String table;
     private StringProperty name = new SimpleStringProperty();
 
-    public Item (int idParent, int idOwn, String name){
+    public Item (int idParent, int idOwn, String table, String name){
         this.idParent = idParent;
         this.idOwn = idOwn;
         this.name.set(name);
+        this.table = table;
     }
     //---------Setters-----------------
 
@@ -26,6 +28,11 @@ public class Item {
     public void setName(String name) {
         this.name.set(name);
     }
+
+    public void setTable(String table) {
+        this.table = table;
+    }
+
     //--------Getters------------------
 
     public int getIdParent() {
@@ -39,6 +46,11 @@ public class Item {
     public String getName() {
         return name.get();
     }
+
+    public String getTable() {
+        return table;
+    }
+
     //---------ToString---------------
 
     @Override

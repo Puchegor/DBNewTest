@@ -1,13 +1,15 @@
 package newtest.Classes;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Answer {
     private int idAnswer;
     private int idQuestion;
-    private StringProperty Answer;
-    private BooleanProperty isTrue;
+    private StringProperty Answer = new SimpleStringProperty();
+    private BooleanProperty isTrue = new SimpleBooleanProperty();
     //---------------Constructor----------------------
     public Answer(int idAnswer, int idQuestion, String Answer, Boolean isTrue){
          this.idAnswer =idAnswer;
