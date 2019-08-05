@@ -29,14 +29,6 @@ public class Alerts {
         ButtonType btnNo = new ButtonType("Нет");
         alert.getButtonTypes().setAll(btnYes, btnNo);
         Optional<ButtonType> choise = alert.showAndWait();
-        if (choise.get() == btnYes) return true;
-        else return false;
-    }
-    public static void Success(String headerText, String contextText){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Завершено");
-        alert.setHeaderText(headerText);
-        alert.setContentText(contextText);
-        alert.showAndWait();
+        return choise.get() == btnYes;
     }
 }

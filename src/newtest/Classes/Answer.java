@@ -44,6 +44,7 @@ public class Answer {
         return idQuestion;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public String getAnswer() {
         return Answer.get();
     }

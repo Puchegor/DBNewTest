@@ -17,6 +17,7 @@ public class NewSubjectController {
     public void BtnSaveHandle(ActionEvent actionEvent) {
         if (!tfSubject.getText().isEmpty()){
             DB.Insert("subjects", "nameSub", tfSubject.getText());
+            close();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Внимание");
@@ -27,6 +28,10 @@ public class NewSubjectController {
     }
 
     public void BtnCancelHandle(ActionEvent actionEvent) {
+        close();
+    }
+
+    private void close(){
         Stage stage = (Stage)btnCancel.getScene().getWindow();
         stage.close();
     }

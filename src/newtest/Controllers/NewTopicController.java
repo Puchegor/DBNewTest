@@ -14,7 +14,6 @@ import newtest.Classes.DB;
 import newtest.Classes.Item;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -54,6 +53,7 @@ public class NewTopicController implements Initializable {
                 if (cbSubject.getValue()!=null) {
                     int idSub = (DB.Select("subjects", "nameSub = \"" + cbSubject.getValue() + "\"")).getInt("idSub");
                     DB.Insert("topics", "nameTopic, idSub", tfTopic.getText() + "\" ,\"" + idSub);
+                    close();
                 } else {
                     Alerts.Warning("Не указано название предмета",
                             "Для продолжения работы выберите название предмета");
@@ -68,9 +68,11 @@ public class NewTopicController implements Initializable {
     }
 
     public void OnBtnCancelHandle(ActionEvent actionEvent) {
+        close();
+    }
+
+    private void close(){
         Stage stage = (Stage)btnCancel.getScene().getWindow();
         stage.close();
     }
-
-
 }

@@ -1,17 +1,21 @@
 package newtest.Controllers;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -42,6 +46,7 @@ public class MainWindowController implements Initializable {
     CheckBox cbIsTrue;
     @FXML
     Button btnAddAnswer, btnDelete;
+    TreeItem<Item> selectedItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,19 +54,19 @@ public class MainWindowController implements Initializable {
             lbStatus.setText("Соединение с базой данных установлено");
         else
             lbStatus.setText("Ошибка соединения с базой данных");
-        buildTree();
+        buildTree(null);
         taNewAnswer.setWrapText(true);
         taNewAnswer.setDisable(true);
         btnAddAnswer.setDisable(true);
         cbIsTrue.setDisable(true);
     }
 // --------Нажатие кнопки Exit------------
-    public void OnBtnExitHandle(ActionEvent actionEvent) {
+    public void OnBtnExitHandle() {
         System.exit(0);
     }
 
     //-----Построение дерева----------
-    public void buildTree(){
+    private void buildTree(TreeItem<Item> selItem){
         ObservableList<Item> subjects = FXCollections.observableArrayList();
         ObservableList<Item> themes = FXCollections.observableArrayList();
         ObservableList<Item> questions = FXCollections.observableArrayList();
@@ -70,6 +75,7 @@ public class MainWindowController implements Initializable {
             ResultSet rst = DB.Select("subjects", null);
             TreeItem<Item> rootItem = new TreeItem<>();
             rootItem.setExpanded(true);
+            assert rst != null;
             while (rst.next()){
                 subjects.add(new Item(0, rst.getInt("idSub"), "subjects",
                         rst.getString("nameSub")));
@@ -102,12 +108,16 @@ public class MainWindowController implements Initializable {
             treeView.setRoot(rootItem);
             treeView.setShowRoot(false);
             treeView.setEditable(true);
-            treeView.setCellFactory(new Callback<TreeView<Item>, TreeCell<Item>>() {
-                @Override
-                public TreeCell<Item> call(TreeView<Item> param) {
-                    return new textFieldTreeCell();
+            treeView.setCellFactory((Callback<TreeView<Item>, TreeCell<Item>>) param -> new textFieldTreeCell());
+            if (selItem != null) {
+                if (!selItem.isLeaf()) {
+                    selItem.setExpanded(true);
+                    if (selItem.parentProperty().isNotNull().get())
+                        selItem.getParent().setExpanded(true);
                 }
-            });
+                else
+                    selItem.getParent().setExpanded(true);
+            }
         }
         catch (SQLException e){
             Alerts.Error(e.getMessage());
@@ -124,7 +134,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        buildTree();
+        buildTree(selectedItem);
     }
 
     public void AddTopicHandle(ActionEvent actionEvent) throws IOException{
@@ -138,7 +148,7 @@ public class MainWindowController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.showAndWait();
-        buildTree();
+        buildTree(selectedItem);
     }
 
     public void AddQuestionHandle(ActionEvent actionEvent) throws IOException {
@@ -150,7 +160,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        buildTree();
+        buildTree(selectedItem);
     }
 
     public void OnTreeViewEntered(MouseEvent mouseEvent) {
@@ -158,6 +168,7 @@ public class MainWindowController implements Initializable {
         selection.setSelectionMode(SelectionMode.SINGLE);
         try {
         int level = treeView.getTreeItemLevel(selection.getSelectedItem());
+        selectedItem = selection.getSelectedItem();
             switch (level){
                 case 1:
                     NewTopicController.setSubjects(getSubjects());
@@ -209,10 +220,7 @@ public class MainWindowController implements Initializable {
                             "idQuestion = \""+selection.getSelectedItem().getValue().getIdOwn()+"\"");
                     while (rst.next()){
                         Boolean isTrue;
-                        if (rst.getInt("isCorrect")!=0)
-                            isTrue = true;
-                        else
-                            isTrue = false;
+                        isTrue = rst.getInt("isCorrect") != 0;
                         answers.add(new Answer(rst.getInt("idAnswer"),
                                 rst.getInt("idQuestion"),
                                 rst.getString("nameAnswer"),
@@ -220,21 +228,49 @@ public class MainWindowController implements Initializable {
                     }
                     tableView.setItems(answers);
                     tableView.setEditable(true);
-                    tcAnswer.setCellValueFactory(new PropertyValueFactory<Answer, String>("Answer"));
-                    tcAnswer.setCellFactory(TextFieldTableCell.forTableColumn());
-                    tcAnswer.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Answer, String>>() {
+                    //Перенос строк в таблице (отключает редактирование) РАЗОБРАТЬСЯ!!!!
+                    tcAnswer.setCellFactory(param -> new TableCell<Answer, String>(){
                         @Override
-                        public void handle(TableColumn.CellEditEvent<Answer, String> event) {
-                            ((Answer)event.getTableView().getItems().get(event.getTablePosition().getRow())
-                            ).setAnswer(event.getNewValue());
-                            DB.Update("answers",
-                                    "nameAnswer = \""+event.getNewValue()+"\"",
-                                    "idAnswer = "+ event.getTableView().getItems().get(event.getTablePosition(
-                                    ).getRow()).getIdAnswer());
+                        protected void updateItem(String item, boolean empty){
+                            super.updateItem(item, empty);
+                            if (item == null || empty){
+                                setText(null);
+                            } else {
+                                Text text = new Text(item);
+                                text.wrappingWidthProperty().bind(getTableColumn().widthProperty().subtract(35));
+                                setGraphic(text);
+                            }
                         }
                     });
-                    tcIsTrue.setCellValueFactory(new PropertyValueFactory<Answer, Boolean>("isTrue"));
-                    //tcIsTrue.setCellFactory(CheckBoxTableCell.forTableColumn());
+                    //Редактирование данных в ячейке
+                    tcAnswer.setCellValueFactory(new PropertyValueFactory<>("Answer"));
+                    tcAnswer.setCellFactory(TextFieldTableCell.forTableColumn());
+                    tcAnswer.setOnEditCommit(event -> {
+                        event.getTableView().getItems().get(event.getTablePosition().getRow()).setAnswer(event.getNewValue());
+                        DB.Update("answers",
+                                "nameAnswer = \""+event.getNewValue()+"\"",
+                                "idAnswer = "+ event.getTableView().getItems().get(event.getTablePosition(
+                                ).getRow()).getIdAnswer());
+                    });
+
+                    tcIsTrue.setCellValueFactory(param -> {
+                        Answer answer = param.getValue();
+                        SimpleBooleanProperty boolProp = new SimpleBooleanProperty(answer.isIsTrue());
+                        boolProp.addListener((observable, oldValue, newValue) -> {
+                            answer.setIsTrue(newValue);
+                            int isTrue;
+                            if (newValue) isTrue = 1;
+                            else isTrue = 0;
+                            DB.Update("answers", "isCorrect = \""+isTrue+"\"",
+                                    "idAnswer = \""+answer.getIdAnswer()+"\"");
+                        });
+                        return boolProp;
+                    });
+                    tcIsTrue.setCellFactory(param -> {
+                        CheckBoxTableCell<Answer, Boolean> cell = new CheckBoxTableCell<>();
+                        cell.setAlignment(Pos.CENTER);
+                        return cell;
+                    });
                     break;
             }
         } catch (SQLException e){
@@ -286,7 +322,7 @@ public class MainWindowController implements Initializable {
         cbIsTrue.setSelected(false);
     }
 
-    public void OnDeleteHandle(ActionEvent actionEvent) {
+    public void OnDeleteHandle() {
         MultipleSelectionModel<TreeItem<Item>> selection = treeView.getSelectionModel();
         int level = treeView.getTreeItemLevel(selection.getSelectedItem());
         switch (level){
@@ -317,6 +353,17 @@ public class MainWindowController implements Initializable {
                 break;
 
         }
-        buildTree();
+        buildTree(selection.getSelectedItem().getParent());
+    }
+
+    public void OnMniExport(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/Export.fxml"));
+        stage.setTitle("Экспортировать базу данных");
+        stage.setResizable(false);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 }

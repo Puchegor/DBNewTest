@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class NewQuestionController implements Initializable {
     @FXML
-    public TextArea taQuestion;
+    public TextArea taQuestion, taCorrect;
     @FXML
     Button btnSave, btnCancel;
     @FXML
@@ -76,10 +76,17 @@ public class NewQuestionController implements Initializable {
     }
 
     public void OnBtnSaveHandle(ActionEvent actionEvent) {
+        if (taCorrect.getText().isEmpty()){
+            Alerts.Warning("Не введено пояснение к правильному ответу",
+                    "Пожалуйста, введите развернутый правильный ответ");
+            return;
+        }
         if (taQuestion.getText() != null){
             try {
                 int idTopic = (DB.Select("topics", "nameTopic = \"" + cbTopic.getValue() + "\"")).getInt("idTopic");
-                DB.Insert("questions", "nameQuestion, idTopic",   taQuestion.getText() +  "\", \"" + idTopic);// Здесь ошибка! Исправить!!!!!
+                DB.Insert("questions", "nameQuestion, idTopic, correctAnswer",
+                        taQuestion.getText() +  "\", \"" + idTopic + "\", \""+taCorrect.getText());
+                close();
             } catch (SQLException e){
                 Alerts.Error(e.getMessage());
             }
@@ -87,6 +94,10 @@ public class NewQuestionController implements Initializable {
     }
 
     public void OnCancelHandle(ActionEvent actionEvent) {
+        close();
+    }
+
+    private void close(){
         Stage stage = (Stage)btnCancel.getScene().getWindow();
         stage.close();
     }

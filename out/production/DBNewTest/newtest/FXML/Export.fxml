@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="255.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+            fx:controller="newtest.Controllers.ExportController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" text="Экспортировать:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0" />
+      <RadioButton fx:id="rbSubject" layoutX="49.0" layoutY="40.0" mnemonicParsing="false" text="Предмет" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="35.0" />
+      <RadioButton fx:id="rbTopic" layoutX="49.0" layoutY="65.0" mnemonicParsing="false" text="Тему" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="60.0" />
+      <ListView fx:id="listView" layoutX="137.0" layoutY="14.0" prefHeight="200.0" prefWidth="450.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+      <Button fx:id="btnExport" layoutX="444.0" layoutY="222.0" mnemonicParsing="false" onAction="#OnBtnExport" text="Экспорт" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="70.0" />
+      <Button fx:id="btnCancel" layoutX="518.0" layoutY="222.0" mnemonicParsing="false" onAction="#onBtnCancel" text="Отмена" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+   </children>
+</AnchorPane>

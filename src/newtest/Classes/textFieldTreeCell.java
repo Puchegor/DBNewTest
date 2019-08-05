@@ -3,7 +3,6 @@ package newtest.Classes;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeCell;
 import javafx.scene.input.KeyCode;
-import newtest.Controllers.MainWindowController;
 
 public class textFieldTreeCell extends TreeCell<Item> {
     private TextField textField;

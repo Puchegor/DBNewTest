@@ -13,7 +13,7 @@ package newtest.Classes;
         import java.util.Properties;
 
 public class Config {
-    public static File config = new File("config.ini");
+    public static final File config = new File("config.ini");
     public static Properties prop = new Properties();
 
     public static String ConfigRead() throws IOException {
