@@ -5,13 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import newtest.Classes.Config;
 import newtest.Classes.DB;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        DB.setConnection();
+        DB.setConnection(Config.ConfigRead());
         Parent root = FXMLLoader.load(getClass().getResource("FXML/MainWindow.fxml"));
         primaryStage.setTitle("DIZ Testing System");
         primaryStage.setScene(new Scene(root));

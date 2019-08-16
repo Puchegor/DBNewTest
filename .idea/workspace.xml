@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="fixup! 27.07.2019 22:25 on Lenovo" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="16.08.2019 23:11 on HP -- Export is ready" />
     <list id="234f62a0-3384-4d27-86ef-563346e12ce2" name="05.08 on Lenovo" comment="" />
     <list id="7b765e39-4d64-4ab2-afee-bb3f457f5950" name="06.08 on Lenovo" comment="" />
-    <list id="3044632c-161d-46fd-9e8b-838cc8ffc4e3" name="27.07.2019 22:25 on Lenovo" comment="">
-      <change afterPath="$PROJECT_DIR$/src/newtest/Controllers/ExportController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/newtest/FXML/Export.fxml" afterDir="false" />
+    <list id="757f00cd-7317-412b-b4a2-4083745677a4" name="14.08.2019 23:01 on HP -- Export is ready" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/DBNewTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DBNewTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DBNewTest/newtest/FXML/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DBNewTest/newtest/FXML/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DBNewTest/newtest/FXML/NewQuestionFrm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DBNewTest/newtest/FXML/NewQuestionFrm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/newtest/Classes/Alerts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Classes/Alerts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Classes/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Classes/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Classes/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Classes/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Classes/textFieldTreeCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Classes/textFieldTreeCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/NewQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/NewQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/NewSubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/NewSubjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/NewTopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/NewTopicController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newtest/Classes/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Classes/DB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/ExportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/ExportController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/newtest/FXML/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/FXML/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/FXML/NewQuestionFrm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/FXML/NewQuestionFrm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/newtest/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.sq3" beforeDir="false" afterPath="$PROJECT_DIR$/test.sq3" afterDir="false" />
     </list>
+    <list id="a263dd0d-aa3f-43c1-9b25-af35c2754b1b" name="14.08.2019 23:11 on HP -- Export is ready" comment="">
+      <change beforePath="$PROJECT_DIR$/out/production/DBNewTest/newtest/FXML/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DBNewTest/newtest/FXML/MainWindow.fxml" afterDir="false" />
+    </list>
+    <list id="b781652c-cf30-4006-879b-4731ddb25c6a" name="16.08.2019 23:11 on HP -- Export is ready" comment="16.08.2019 23:11 on HP -- Export is ready" />
+    <list id="3044632c-161d-46fd-9e8b-838cc8ffc4e3" name="27.07.2019 22:25 on Lenovo" comment="" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,7 +29,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="190" />
+    <option name="myElementSize" value="182" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -86,8 +83,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5763">
-              <caret line="366" column="28" selection-start-line="366" selection-start-column="28" selection-end-line="366" selection-end-column="28" />
+            <state relative-caret-position="4556">
+              <caret line="295" column="13" selection-start-line="295" selection-start-column="13" selection-end-line="295" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/newtest/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,8 +128,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/newtest/Classes/DB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1377">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="1003">
+              <caret line="64" column="48" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +140,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/ExportController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            <state relative-caret-position="136">
+              <caret line="97" column="20" lean-forward="true" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/newtest/Classes/Alerts.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewSubjectController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,33 +197,33 @@
         <option value="$PROJECT_DIR$/src/newtest/Controller.java" />
         <option value="$PROJECT_DIR$/src/newtest/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/Question.java" />
-        <option value="$PROJECT_DIR$/src/newtest/Main.java" />
         <option value="$PROJECT_DIR$/src/newtest/FXML/NewSubjectFrm.fxml" />
         <option value="$PROJECT_DIR$/src/newtest/FXML/NewTopicFrm.fxml" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/TreeStorage.java" />
         <option value="$PROJECT_DIR$/src/newtest/FXML/NewQuestionFrm.fxml" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/Answer.java" />
         <option value="$PROJECT_DIR$/src/newtest/FXML/MainWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/newtest/Classes/DB.java" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/Item.java" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/textFieldTreeCell.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/NewSubjectController.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/NewQuestionController.java" />
-        <option value="$PROJECT_DIR$/src/newtest/Classes/Alerts.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/NewTopicController.java" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/Config.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/newtest/FXML/Export.fxml" />
+        <option value="$PROJECT_DIR$/src/newtest/Main.java" />
+        <option value="$PROJECT_DIR$/src/newtest/Classes/DB.java" />
+        <option value="$PROJECT_DIR$/src/newtest/Classes/Alerts.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/ExportController.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="38" />
-    <option name="y" value="124" />
-    <option name="width" value="815" />
-    <option name="height" value="774" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -198,6 +231,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,7 +275,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -277,7 +310,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/Oracle/JavaFX Scene Builder 2.0/JavaFX Scene Builder 2.0.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/newtest/sqlite-jdbc-3.27.2.1.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -311,6 +344,36 @@
       <option name="testName" />
       <method />
     </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="newtest.Main" />
+      <module name="DBNewTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="newtest.Main" />
+      <module name="DBNewTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -333,44 +396,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
-      <Host>localhost</Host>
-      <Port>5050</Port>
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="newtest.Main" />
-      <module name="DBNewTest" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="newtest.Controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -381,6 +406,9 @@
       <changelist id="7b765e39-4d64-4ab2-afee-bb3f457f5950" name="06.08 on Lenovo" comment="" />
       <changelist id="234f62a0-3384-4d27-86ef-563346e12ce2" name="05.08 on Lenovo" comment="" />
       <changelist id="3044632c-161d-46fd-9e8b-838cc8ffc4e3" name="27.07.2019 22:25 on Lenovo" comment="" />
+      <changelist id="b781652c-cf30-4006-879b-4731ddb25c6a" name="16.08.2019 23:11 on HP -- Export is ready" comment="" />
+      <changelist id="a263dd0d-aa3f-43c1-9b25-af35c2754b1b" name="14.08.2019 23:11 on HP -- Export is ready" comment="" />
+      <changelist id="757f00cd-7317-412b-b4a2-4083745677a4" name="14.08.2019 23:01 on HP -- Export is ready" comment="" />
       <created>1359379246138</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -422,29 +450,64 @@
       <option name="project" value="LOCAL" />
       <updated>1565021365950</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="14.08.2019 23:01 on HP -- Export is ready">
+      <created>1565812957023</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1565812957023</updated>
+    </task>
+    <task id="LOCAL-00007" summary="14.08.2019 23:01 on HP -- Export is ready">
+      <created>1565813026248</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1565813026248</updated>
+    </task>
+    <task id="LOCAL-00008" summary="14.08.2019 23:11 on HP -- Export is ready">
+      <created>1565813478284</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1565813478284</updated>
+    </task>
+    <task id="LOCAL-00009" summary="16.08.2019 23:11 on HP -- Export is ready">
+      <created>1565981146547</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1565981146547</updated>
+    </task>
+    <task id="LOCAL-00010" summary="16.08.2019 23:11 on HP -- Export is ready">
+      <created>1565982461140</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1565982461140</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.17961165" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.24054463" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" weight="0.32983872" />
       <window_info id="Designer" order="3" />
       <window_info id="Repositories" order="4" weight="0.32928804" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3281493" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39968896" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32405892" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37251908" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32970452" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3453355" />
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
@@ -462,7 +525,7 @@
       <window_info anchor="right" id="Maven Projects" order="6" />
       <window_info anchor="right" id="Maven" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.3295626" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.3290469" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.28236246" />
@@ -539,12 +602,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="27.07.2019 22:25 on Lenovo" />
     <MESSAGE value="05.08 on Lenovo" />
     <MESSAGE value="06.08 on Lenovo" />
-    <option name="LAST_COMMIT_MESSAGE" value="06.08 on Lenovo" />
+    <MESSAGE value="14.08.2019 23:01 on HP -- Export is ready" />
+    <MESSAGE value="14.08.2019 23:11 on HP -- Export is ready" />
+    <MESSAGE value="16.08.2019 23:11 on HP -- Export is ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="16.08.2019 23:11 on HP -- Export is ready" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -555,18 +620,17 @@
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/newtest/Classes/DB.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DBNewTest$Main.ic" NAME="Main Coverage Results" MODIFIED="1565645361525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>newtest.Controllers.*</FILTER>
+    </SUITE>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/newtest/Classes/Question.java">
@@ -613,7 +677,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/fxml/FXMLLoader.java" />
     <entry file="file://$PROJECT_DIR$/src/newtest/Classes/TreeStorage.java" />
     <entry file="file://$PROJECT_DIR$/src/newtest/FXML/NewQuestionFrm.fxml">
       <provider selected="true" editor-type-id="text-editor">
@@ -650,16 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/newtest/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/newtest/Classes/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -670,16 +723,6 @@
             <element signature="e#823#824#0" expanded="true" />
             <element signature="e#1080#1081#0" expanded="true" />
             <element signature="e#1108#1109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewSubjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -705,37 +748,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/control/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="668" column="19" selection-start-line="668" selection-start-column="19" selection-end-line="668" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newtest/Classes/Alerts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="2577" selection-start-line="2577" selection-end-line="2577" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/event/EventHandler.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/control/Cell.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/fxml/FXMLLoader.java" />
     <entry file="file://$PROJECT_DIR$/src/newtest/FXML/MainWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -752,10 +767,30 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="1772" selection-start-line="1772" selection-end-line="1772" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5763">
-          <caret line="366" column="28" selection-start-line="366" selection-start-column="28" selection-end-line="366" selection-end-column="28" />
+        <state relative-caret-position="4556">
+          <caret line="295" column="13" selection-start-line="295" selection-start-column="13" selection-end-line="295" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newtest/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -781,8 +816,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/newtest/Classes/DB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="1003">
+          <caret line="64" column="48" selection-start-line="64" selection-start-column="48" selection-end-line="64" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewSubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newtest/Classes/Alerts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -791,8 +846,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/ExportController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="136">
+          <caret line="97" column="20" lean-forward="true" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -816,6 +871,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
+          <last-edited>No facets are configured</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -838,6 +894,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

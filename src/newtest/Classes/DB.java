@@ -1,32 +1,49 @@
 package newtest.Classes;
 
+import javafx.scene.control.Alert;
+
 import java.io.IOException;
 import java.sql.*;
 
 public class DB {
     private static Connection connection;
+   // private static Connection xmConnection;
     private static ResultSet resultSet;
     private static Statement statement;
 
-    public static void setConnection(){
+    public static void setConnection(String dataBase){
         try{
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:"+Config.ConfigRead());
-            createTables();
+            connection = DriverManager.getConnection("jdbc:sqlite:"+dataBase);
+            createTables(connection);
         }
-        catch (SQLException | ClassNotFoundException | IOException e){
+        catch (SQLException | ClassNotFoundException e){
             Alerts.Error(e.getMessage());
         }
     }
+
+   /* public static void setXmConnection(String dataBase) {
+        try{
+            Class.forName("org.sqlite.JDBC");
+            xmConnection = DriverManager.getConnection("jdbc:sqlite:"+dataBase);
+            createTables(xmConnection);
+        } catch (ClassNotFoundException | SQLException e){
+            Alerts.Error(e.getMessage());
+        }
+    }
+
+    public static Connection getXmConnection(){
+        return xmConnection;
+    }*/
 
     public static Connection getConnection() {
         return connection;
     }
 
-    private static void createTables(){
+    private static void createTables(Connection con){
         try {
-            DatabaseMetaData metadata = connection.getMetaData();
-            statement = connection.createStatement();
+            DatabaseMetaData metadata = con.getMetaData();
+            statement = con.createStatement();
             resultSet = metadata.getTables(null,null, "subjects", null);
             if (!resultSet.next())
                 statement.executeUpdate("CREATE TABLE subjects (idSub INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -92,6 +109,13 @@ public class DB {
             String sql = "DELETE FROM "+table+" WHERE "+field+" = "+id;
             statement.executeUpdate(sql);
         } catch (SQLException e){
+            Alerts.Error(e.getMessage());
+        }
+    }
+    public static void Query (String sql){
+        try {
+            statement.execute(sql);
+        }catch (SQLException e){
             Alerts.Error(e.getMessage());
         }
     }

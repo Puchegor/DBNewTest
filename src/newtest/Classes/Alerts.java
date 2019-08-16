@@ -16,7 +16,7 @@ public class Alerts {
     public static void Error (String error){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Ошибка");
-        alert.setHeaderText("Во время работы программы произошла ощибка");
+        alert.setHeaderText("Во время работы программы произошла ошибка");
         alert.setContentText(error);
         alert.showAndWait();
     }
