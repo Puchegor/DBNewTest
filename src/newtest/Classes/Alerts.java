@@ -31,4 +31,11 @@ public class Alerts {
         Optional<ButtonType> choise = alert.showAndWait();
         return choise.get() == btnYes;
     }
+    public static void Success (String text){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Операция завершена");
+        alert.setHeaderText("Операция завершена успешно");
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
 }
