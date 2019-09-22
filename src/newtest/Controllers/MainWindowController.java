@@ -31,7 +31,7 @@ public class MainWindowController implements Initializable {
     @FXML
     Label lbStatus;
     @FXML
-    MenuItem miAddSubject, miAddTopic, miAddQuestion;
+    MenuItem miAddSubject, miAddTopic, miAddQuestion, mniBeginTest;
     @FXML
     TreeView treeView;
     @FXML
@@ -361,6 +361,17 @@ public class MainWindowController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("../FXML/Export.fxml"));
         stage.setTitle("Экспортировать базу данных");
         stage.setResizable(false);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
+
+    public void onMniBeginTestHandle(ActionEvent actionEvent) throws IOException{
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/TestSetupFrm.fxml"));
+        stage.setTitle("Настройки теста");
+        stage.setResizable(true);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);

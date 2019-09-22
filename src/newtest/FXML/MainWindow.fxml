@@ -20,9 +20,9 @@
                   <MenuItem mnemonicParsing="false" onAction="#OnBtnExitHandle" text="Выход" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Тестирование">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="mniBiginTest" mnemonicParsing="false" onAction="#onMniBeginTestHandle" text="Начать тест" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

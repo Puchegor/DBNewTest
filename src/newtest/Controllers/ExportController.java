@@ -25,10 +25,11 @@ public class ExportController implements Initializable {
     RadioButton rbSubject, rbTopic;
     @FXML
     ListView<Item> listView;
+    @FXML
+    CheckBox checkAndroid;
     int i = 0;
 
     public void OnBtnExport() {
-        ResultSet rst;
         MultipleSelectionModel<Item> selection = listView.getSelectionModel();
         if (selection.isEmpty()){
             Alerts.Warning("Не выбран элемент базы для экспорта",
@@ -47,31 +48,61 @@ public class ExportController implements Initializable {
             case 1:
                 int subjectID = selection.getSelectedItem().getIdOwn();
                 DB.Query("ATTACH DATABASE \'"+file.getPath()+"\' AS otherdb; ");
-                DB.Query("CREATE TABLE otherdb.subjects (idSub INTEGER PRIMARY KEY AUTOINCREMENT, nameSub TEXT); ");
-                DB.Query("CREATE TABLE otherdb.topics (idTopic INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "idSub INTEGER NOT NULL, nameTopic TEXT(50), " +
-                        "FOREIGN KEY (idSub) REFERENCES subjects (idSub)); ");
-                DB.Query("CREATE TABLE otherdb.questions (idQuestion INTEGER PRIMARY KEY AUTOINCREMENT, idTopic INTEGER NOT NULL, " +
-                        "nameQuestion TEXT, correctAnswer TEXT, FOREIGN KEY (idTopic) REFERENCES topics(idTopic)); ");
-                DB.Query("CREATE TABLE otherdb.answers (idAnswer INTEGER PRIMARY KEY AUTOINCREMENT, idQuestion INTEGER NOT NULL, " +
-                    "nameAnswer TEXT, isCorrect INTEGER, FOREIGN KEY (idQuestion) REFERENCES questions (idQuestion)); ");
-                DB.Query("INSERT INTO otherdb.subjects SELECT * FROM subjects WHERE idSub = \""+
-                     subjectID+"\"");
-                DB.Query("INSERT INTO otherdb.topics SELECT * FROM topics WHERE idSub = \""+
-                     subjectID+"\"");
-                DB.Query("INSERT INTO otherdb.questions " +
-                        "SELECT questions.idQuestion, questions.idTopic, questions.nameQuestion, questions.correctAnswer " +
-                        "FROM questions, topics, subjects " +
-                        "WHERE questions.idTopic=topics.idTopic " +
-                        "AND topics.idSub = subjects.idSub " +
-                        "AND subjects.idSub = \""+subjectID+"\"");
-                DB.Query("INSERT INTO otherdb.answers "+
-                        "SELECT answers.idAnswer, answers.idQuestion, answers.nameAnswer, answers.isCorrect " +
-                        "FROM answers, questions, topics, subjects " +
-                        "WHERE answers.idQuestion = questions.idQuestion " +
-                        "AND questions.idTopic = topics.idTopic " +
-                        "AND topics.idSub = subjects.idSub " +
-                        "AND subjects.idSub = \""+subjectID+"\"");
+                if (!checkAndroid.isSelected()) {
+                    DB.Query("CREATE TABLE otherdb.subjects (idSub INTEGER PRIMARY KEY AUTOINCREMENT, nameSub TEXT); ");
+                    DB.Query("CREATE TABLE otherdb.topics (idTopic INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "idSub INTEGER NOT NULL, nameTopic TEXT(50), " +
+                            "FOREIGN KEY (idSub) REFERENCES subjects (idSub)); ");
+                    DB.Query("CREATE TABLE otherdb.questions (idQuestion INTEGER PRIMARY KEY AUTOINCREMENT, idTopic INTEGER NOT NULL, " +
+                            "nameQuestion TEXT, correctAnswer TEXT, FOREIGN KEY (idTopic) REFERENCES topics(idTopic)); ");
+                    DB.Query("CREATE TABLE otherdb.answers (idAnswer INTEGER PRIMARY KEY AUTOINCREMENT, idQuestion INTEGER NOT NULL, " +
+                            "nameAnswer TEXT, isCorrect INTEGER, FOREIGN KEY (idQuestion) REFERENCES questions (idQuestion)); ");
+                    DB.Query("INSERT INTO otherdb.subjects SELECT * FROM subjects WHERE idSub = \"" +
+                            subjectID + "\"");
+                    DB.Query("INSERT INTO otherdb.topics SELECT * FROM topics WHERE idSub = \"" +
+                            subjectID + "\"");
+                    DB.Query("INSERT INTO otherdb.questions " +
+                            "SELECT questions.idQuestion, questions.idTopic, questions.nameQuestion, questions.correctAnswer " +
+                            "FROM questions, topics, subjects " +
+                            "WHERE questions.idTopic=topics.idTopic " +
+                            "AND topics.idSub = subjects.idSub " +
+                            "AND subjects.idSub = \"" + subjectID + "\"");
+                    DB.Query("INSERT INTO otherdb.answers " +
+                            "SELECT answers.idAnswer, answers.idQuestion, answers.nameAnswer, answers.isCorrect " +
+                            "FROM answers, questions, topics, subjects " +
+                            "WHERE answers.idQuestion = questions.idQuestion " +
+                            "AND questions.idTopic = topics.idTopic " +
+                            "AND topics.idSub = subjects.idSub " +
+                            "AND subjects.idSub = \"" + subjectID + "\"");
+                }else {
+                    DB.Query("CREATE TABLE otherdb.subjects (_id INTEGER PRIMARY KEY AUTOINCREMENT, nameSub TEXT)");
+                    DB.Query("CREATE TABLE otherdb.topics (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "idSub INTEGER NOT NULL, nameTopic Text (50), " +
+                            "FOREIGN KEY (idSub) REFERENCES subjects (_id))");
+                    DB.Query("CREATE TABLE otherdb.questions (_id INTEGER PRIMARY KEY AUTOINCREMENT, idTopic INTEGER NOT NULL, " +
+                            "nameQuestion TEXT, correctAnswer TEXT, FOREIGN KEY (idTopic) REFERENCES topics(_id)); ");
+                    DB.Query("CREATE TABLE otherdb.answers (_id INTEGER PRIMARY KEY AUTOINCREMENT, idQuestion INTEGER NOT NULL, " +
+                            "nameAnswer TEXT, isCorrect INTEGER, FOREIGN KEY (idQuestion) REFERENCES questions (_id)); ");
+                    DB.Query("CREATE TABLE otherdb.android_metadata (locale TEXT DEFAULT 'en_US')");
+                    DB.Query("INSERT INTO android_metadata (locale) VALUES ('en_US')");// NO COMPRENDO!!!!!!!!!!!
+                    DB.Query("INSERT INTO otherdb.subjects (_id, nameSub) SELECT idSub, nameSub FROM subjects WHERE idSub = \"" +
+                            subjectID + "\"");
+                    DB.Query("INSERT INTO otherdb.topics (_id, idSub, nameTopic) SELECT idTopic, idSub, nameTopic" +
+                            " FROM topics WHERE idSub = \"" +subjectID + "\"");
+                    DB.Query("INSERT INTO otherdb.questions (_id, idTopic, nameQuestion, correctAnswer) " +
+                            "SELECT questions.idQuestion, questions.idTopic, questions.nameQuestion, questions.correctAnswer " +
+                            "FROM questions, topics, subjects " +
+                            "WHERE questions.idTopic=topics.idTopic " +
+                            "AND topics.idSub = subjects.idSub " +
+                            "AND subjects.idSub = \"" + subjectID + "\"");
+                    DB.Query("INSERT INTO otherdb.answers (_id, idQuestion, nameAnswer, isCorrect) " +
+                            "SELECT answers.idAnswer, answers.idQuestion, answers.nameAnswer, answers.isCorrect " +
+                            "FROM answers, questions, topics, subjects " +
+                            "WHERE answers.idQuestion = questions.idQuestion " +
+                            "AND questions.idTopic = topics.idTopic " +
+                            "AND topics.idSub = subjects.idSub " +
+                            "AND subjects.idSub = \"" + subjectID + "\"");
+                }
                 break;
             case 2:
                 int topicID = selection.getSelectedItem().getIdOwn();

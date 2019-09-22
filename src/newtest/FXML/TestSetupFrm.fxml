@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="newtest.Controllers.TestSetupController">
+   <children>
+      <Label layoutX="14.0" layoutY="28.0" text="Выберите предмет для тестирования:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0" />
+      <ComboBox fx:id="cbSubjectsToTest" layoutX="225.0" layoutY="15.0" onAction="#onCbSubjectsChangedHandle" prefWidth="150.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0" />
+      <Label layoutX="14.0" layoutY="48.0" text="Выберите темы для тестирования:" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="50.0" />
+      <ListView fx:id="lvTopicsToTest" layoutX="14.0" layoutY="67.0" prefHeight="200.0" prefWidth="582.0" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0" />
+      <Button fx:id="btnCancel" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#onBtnCancelHandle" prefWidth="70.0" text="Отмена" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <Button fx:id="btnOk" layoutX="535.0" layoutY="380.0" mnemonicParsing="false" onAction="#onBtnOkHandle" prefWidth="70.0" text="OK" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="80.0" />
+      <Label layoutX="14.0" layoutY="283.0" text="Количество вопросов:" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="5.0" />
+      <Label layoutX="14.0" layoutY="307.0" text="Количество вариантов:" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="5.0" />
+      <Separator layoutX="146.0" layoutY="357.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <TextField fx:id="tfQuestions" layoutX="138.0" layoutY="289.0" prefHeight="25.0" prefWidth="56.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="160.0" />
+      <TextField fx:id="tfVariants" layoutX="145.0" layoutY="324.0" prefHeight="25.0" prefWidth="56.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="160.0" />
+      <Button fx:id="btnQMinus" layoutX="133.0" layoutY="290.0" mnemonicParsing="false" onAction="#qMinusHandle" text="-" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="138.0" />
+      <Button fx:id="btnVMinus" layoutX="138.0" layoutY="320.0" mnemonicParsing="false" onAction="#vMinusHandle" text="-" AnchorPane.bottomAnchor="50.0" />
+      <Button fx:id="btnQPlus" layoutX="218.0" layoutY="290.0" mnemonicParsing="false" onAction="#qPlusHandle" text="+" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="217.0" />
+      <Button fx:id="btnVPlus" layoutX="218.0" layoutY="320.0" mnemonicParsing="false" onAction="#vPlusHandle" text="+" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="217.0" />
+   </children>
+</AnchorPane>

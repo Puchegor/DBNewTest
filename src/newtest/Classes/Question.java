@@ -16,6 +16,12 @@ public class Question {
         this.Question.setValue(Question);
         this.Answers.setAll(answers);
     }
+
+    public Question (int idQuestion, int idTopic, String Question){
+        this.idQuestion = idQuestion;
+        this.idTopic = idTopic;
+        this.Question.setValue(Question);
+    }
     //------Setters-------------------------
 
 
