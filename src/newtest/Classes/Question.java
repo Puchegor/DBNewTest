@@ -1,5 +1,6 @@
 package newtest.Classes;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,21 +8,18 @@ import javafx.collections.ObservableList;
 public class Question {
     private int idQuestion;
     private int idTopic;
-    private StringProperty Question;
+    private StringProperty Question = new SimpleStringProperty();
     private ObservableList<Answer> Answers = FXCollections.observableArrayList();
     //------Constructor--------------------
     public Question (int idQuestion, int idTopic, String Question, ObservableList<Answer> answers){
         this.idQuestion=idQuestion;
         this.idTopic = idTopic;
-        this.Question.setValue(Question);
+        assert this.Question != null;
+        this.Question.set(Question);
+        //this.Question.setValue(Question);
         this.Answers.setAll(answers);
     }
 
-    public Question (int idQuestion, int idTopic, String Question){
-        this.idQuestion = idQuestion;
-        this.idTopic = idTopic;
-        this.Question.setValue(Question);
-    }
     //------Setters-------------------------
 
 

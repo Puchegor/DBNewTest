@@ -12,6 +12,7 @@ import newtest.Classes.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -34,22 +35,35 @@ public class TestSetupController implements Initializable {
         ObservableList<Question> test = FXCollections.observableArrayList();
         MultipleSelectionModel<Item> selection = lvTopicsToTest.getSelectionModel();
         selection.setSelectionMode(SelectionMode.MULTIPLE);
-        int quests = Integer.parseInt(tfQuestions.getText());
-        int vars = Integer.parseInt(tfVariants.getText());
         ResultSet rst;
         for (int i = 0; i < selection.getSelectedItems().size(); i++){
             try {
-                int idTopic = selection.getSelectedItems().get(i).getIdParent();
-                String sql;
-                sql = "SELECT * FROM topics WHERE";
-                //rst = DB.Query();
-                while(rst.next()) {
-
+                int idTopic = selection.getSelectedItems().get(i).getIdOwn();
+                rst = DB.Select("questions", " idTopic = "+idTopic);
+                ArrayList<Integer> ques = new ArrayList<>();
+                while (rst.next()){
+                    ques.add(rst.getInt("idQuestion"));
+                }
+                ObservableList<Answer> answers = FXCollections.observableArrayList();
+                for (int q = 0; q < ques.size(); q++){
+                    int idQuestion = ques.get(q);
+                    rst = DB.Select("questions", " idQuestion = "+idQuestion);
+                    String nameQuestion = rst.getString("nameQuestion");
+                    rst = DB.Select("answers", " idQuestion = "+idQuestion);
+                    while (rst.next()) {
+                        boolean isCorrect = false;
+                        if (rst.getInt("isCorrect") != 0) isCorrect = true;
+                        answers.add(new Answer(rst.getInt("idAnswer"), idQuestion,
+                                rst.getString("nameAnswer"), isCorrect));//-----------------Дурит мозг индекс тем!
+                    }
+                    test.add(new Question(idQuestion, idTopic, nameQuestion, answers));
+                    answers.clear();
                 }
             }catch(SQLException e){
                 Alerts.Error(e.getMessage());
             }
         }
+        Collections.shuffle(test);
     }
 
     @Override

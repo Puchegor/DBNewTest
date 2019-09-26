@@ -14,6 +14,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Файл">
             <items>
+                  <MenuItem mnemonicParsing="false" text="Открыть базу данных" />
+                  <Menu mnemonicParsing="false" text="Открыть недавние" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem fx:id="mniExport" mnemonicParsing="false" onAction="#OnMniExport" text="Экспорт" />
                   <MenuItem fx:id="mniImport" mnemonicParsing="false" text="Импорт" />
                   <SeparatorMenuItem mnemonicParsing="false" />
@@ -22,7 +25,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Тестирование">
             <items>
-              <MenuItem fx:id="mniBiginTest" mnemonicParsing="false" onAction="#onMniBeginTestHandle" text="Начать тест" />
+              <MenuItem fx:id="mniBiginTest" mnemonicParsing="false" onAction="#onMniBeginTestHandle" text="Создать тест" />
+                  <MenuItem mnemonicParsing="false" text="Открыть тест" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
