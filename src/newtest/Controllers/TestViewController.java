@@ -8,9 +8,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import newtest.Classes.Alerts;
 import newtest.Classes.Question;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -44,6 +49,19 @@ public class TestViewController implements Initializable {
     }
 
     public void onBtnSaveHandle(ActionEvent actionEvent) {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Выберите имя файла");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Файлы HTML", "*.html");
+        chooser.getExtensionFilters().add(filter);
+        File testFile = chooser.showSaveDialog(btnSave.getScene().getWindow());
+        if (testFile != null){
+            try (FileWriter writer = new FileWriter(testFile, false)){
+                writer.write(webView.getEngine().getDocument().getTextContent().toString());//---ОШИБКА---------
+                writer.flush();
+            }catch (IOException e){
+                Alerts.Error(e.getMessage());
+            }
+        }
     }
 
     public void onBtnPrintHandle(ActionEvent actionEvent) {
@@ -75,11 +93,31 @@ public class TestViewController implements Initializable {
                 int nq = k+1;
                 key +="<p>"+nq;
                 printableTest += "<p>"+nq+". "+rawTest.get(k).getQuestion()+"</p><ol>";
+                int correct = -1;
                 for (int a = 0; a < rawTest.get(k).getAnswers().size(); a++){
-                    int correct;
                     if (rawTest.get(k).getAnswers().get(a).isIsTrue())
                         correct = a;
                     printableTest += "<li>"+rawTest.get(k).getAnswers().get(a).getAnswer()+"</li>";
+                }
+                switch (correct){
+                    case 0:
+                        key += "a</p>";
+                        break;
+                    case 1:
+                        key += "б</p>";
+                        break;
+                    case 2:
+                        key += "в</p>";
+                        break;
+                    case 3:
+                        key += "г</p>";
+                        break;
+                    case 4:
+                        key += "д</p>";
+                        break;
+                    default:
+                        key += "</p>";
+                        break;
                 }
                 printableTest += "</ol>";
             }
