@@ -70,8 +70,11 @@ public class TestSetupController implements Initializable {
             }
         }
         Collections.shuffle(test);
+        TestViewController.setTest(test);
+        TestViewController.setNumQuestions(Integer.parseInt(tfQuestions.getText()));
+        TestViewController.setNumVariants(Integer.parseInt(tfVariants.getText()));
         
-        /*Stage stage = new Stage();
+        Stage stage = new Stage();
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("../FXML/TestViewFrm.fxml"));
@@ -84,7 +87,7 @@ public class TestSetupController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.showAndWait();*/
+        stage.showAndWait();
     }
 
     @Override
