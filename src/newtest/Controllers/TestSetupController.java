@@ -4,11 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import newtest.Classes.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,7 +59,8 @@ public class TestSetupController implements Initializable {
                         boolean isCorrect = false;
                         if (rst.getInt("isCorrect") != 0) isCorrect = true;
                         answers.add(new Answer(rst.getInt("idAnswer"), idQuestion,
-                                rst.getString("nameAnswer"), isCorrect));//-----------------Дурит мозг индекс тем!
+                                rst.getString("nameAnswer"), isCorrect));
+                        Collections.shuffle(answers);
                     }
                     test.add(new Question(idQuestion, idTopic, nameQuestion, answers));
                     answers.clear();
@@ -64,6 +70,21 @@ public class TestSetupController implements Initializable {
             }
         }
         Collections.shuffle(test);
+        
+        /*Stage stage = new Stage();
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../FXML/TestViewFrm.fxml"));
+        }catch (IOException e){
+            Alerts.Error(e.getMessage());
+            return;
+        }
+        stage.setTitle("Тест");
+        stage.setResizable(true);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();*/
     }
 
     @Override
