@@ -17,6 +17,8 @@
                   <MenuItem mnemonicParsing="false" text="Открыть базу данных" />
                   <Menu mnemonicParsing="false" text="Открыть недавние" />
                   <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mniTasks" mnemonicParsing="false" onAction="#onMniTasksHandle" text="Задачи" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem fx:id="mniExport" mnemonicParsing="false" onAction="#OnMniExport" text="Экспорт" />
                   <MenuItem fx:id="mniImport" mnemonicParsing="false" text="Импорт" />
                   <SeparatorMenuItem mnemonicParsing="false" />

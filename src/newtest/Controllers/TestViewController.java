@@ -29,6 +29,7 @@ public class TestViewController implements Initializable {
     private static ObservableList<Question> test = FXCollections.observableArrayList();
     private static int numQuestions;
     private static int numVariants;
+    private String printableTest;
 
 //-------------SETTERS----------------------------------------
     public static void setNumQuestions(int numQuestions) {
@@ -56,7 +57,7 @@ public class TestViewController implements Initializable {
         File testFile = chooser.showSaveDialog(btnSave.getScene().getWindow());
         if (testFile != null){
             try (FileWriter writer = new FileWriter(testFile, false)){
-                writer.write(webView.getEngine().getDocument().getTextContent().toString());//---ОШИБКА---------
+                writer.write(printableTest);
                 writer.flush();
             }catch (IOException e){
                 Alerts.Error(e.getMessage());
@@ -75,7 +76,7 @@ public class TestViewController implements Initializable {
 
     private String makeTest(ObservableList<Question> rawTest){
         String key = "";
-        String printableTest = "<!doctype html><html lang-\"ru-BY\"><head><meta charset=\"UTF-8\">" +
+        printableTest = "<!doctype html><html lang-\"ru-BY\"><head><meta charset=\"UTF-8\">" +
                 "<style> ol {list-style-type: none;}"+
                 "li::before {margin-right: 5px;}"+
                 "li:nth-child(1)::before { content: 'а)'; }"+

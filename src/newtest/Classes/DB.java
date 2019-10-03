@@ -51,6 +51,14 @@ public class DB {
                         "nameAnswer TEXT, " +
                         "isCorrect INTEGER, " +
                         "FOREIGN KEY (idQuestion) REFERENCES questions (idQuestion))");
+            resultSet = metadata.getTables(null, null, "tasks", null);
+            if (!resultSet.next())
+                statement.executeUpdate("CREATE TABLE tasks " +
+                        "(idTask INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                        "idTopic INTEGER NOT NULL, "+
+                        "nameTask TEXT, "+
+                        "answer TEXT, " +
+                        "FOREIGN KEY (idTopic) REFERENCES topics (idTopic))");
         } catch (SQLException e){
             Alerts.Error(e.getMessage());
         }

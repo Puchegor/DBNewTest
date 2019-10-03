@@ -377,4 +377,15 @@ public class MainWindowController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
+
+    public void onMniTasksHandle(ActionEvent actionEvent) throws IOException{
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/TaskFrm.fxml"));
+        stage.setTitle("Задачи");
+        stage.setResizable(false);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+    }
 }
