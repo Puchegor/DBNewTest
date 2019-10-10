@@ -109,20 +109,28 @@ public class MainWindowController implements Initializable {
             treeView.setShowRoot(false);
             treeView.setEditable(true);
             treeView.setCellFactory((Callback<TreeView<Item>, TreeCell<Item>>) param -> new textFieldTreeCell());
-            if (selItem != null) {
-                if (!selItem.isLeaf()) {
-                    selItem.setExpanded(true);
-                    if (selItem.parentProperty().isNotNull().get())
-                        selItem.getParent().setExpanded(true);
-                }
-                else
-                    selItem.getParent().setExpanded(true);
-            }
+            expandTreeView(selectedItem);
         }
         catch (SQLException e){
             Alerts.Error(e.getMessage());
             return;
         }
+    }
+
+    private void expandTreeView (TreeItem<Item> selectedItem){
+        if (selectedItem != null && !selectedItem.isLeaf()){
+            selectedItem.setExpanded(true);
+            TreeItem<Item> parent = selectedItem.getParent();
+            while(parent!=null){
+                selectedItem.getParent().setExpanded(true);
+                parent = parent.getParent();
+            }
+        }
+        /*if (selectedItem != null){
+            expandTreeView(selectedItem.getParent());
+            if (!selectedItem.isLeaf())
+                selectedItem.setExpanded(true);
+        }*/
     }
 
     public void AddSubjectHandle(ActionEvent actionEvent) throws IOException {

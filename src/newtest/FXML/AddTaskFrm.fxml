@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="newtest.Controllers.AddTaskController">
+   <children>
+      <ListView fx:id="listView" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <Button fx:id="btnCancel" layoutX="534.0" layoutY="353.0" mnemonicParsing="false" onAction="#onCancelHandle" text="Отмена" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <Button fx:id="btnOk" layoutX="470.0" layoutY="361.0" mnemonicParsing="false" onAction="#onOkHandle" prefWidth="65.0" text="OK" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="70.0" />
+   </children>
+</AnchorPane>

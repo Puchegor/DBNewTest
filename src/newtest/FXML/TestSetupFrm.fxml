@@ -23,5 +23,6 @@
       <Button fx:id="btnVMinus" layoutX="138.0" layoutY="320.0" mnemonicParsing="false" onAction="#vMinusHandle" text="-" AnchorPane.bottomAnchor="50.0" />
       <Button fx:id="btnQPlus" layoutX="218.0" layoutY="290.0" mnemonicParsing="false" onAction="#qPlusHandle" text="+" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="217.0" />
       <Button fx:id="btnVPlus" layoutX="218.0" layoutY="320.0" mnemonicParsing="false" onAction="#vPlusHandle" text="+" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="217.0" />
+      <Button fx:id="btnAddTasks" layoutX="257.0" layoutY="325.0" mnemonicParsing="false" onAction="#onAddTaskHandle" text="Добавить задачи" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="260.0" />
    </children>
 </AnchorPane>

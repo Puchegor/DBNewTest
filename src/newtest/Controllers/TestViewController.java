@@ -1,6 +1,5 @@
 package newtest.Controllers;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,12 +11,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import newtest.Classes.Alerts;
 import newtest.Classes.Question;
+import newtest.Classes.RawTest;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class TestViewController implements Initializable {
@@ -26,7 +25,7 @@ public class TestViewController implements Initializable {
     @FXML
     WebView webView;
 
-    private static ObservableList<Question> test = FXCollections.observableArrayList();
+    //private static ObservableList<Question> test = FXCollections.observableArrayList();
     private static int numQuestions;
     private static int numVariants;
     private String printableTest;
@@ -40,9 +39,9 @@ public class TestViewController implements Initializable {
         TestViewController.numVariants = numVariants;
     }
 
-    public static void setTest(ObservableList<Question> rawTest) {
+    /*public static void setTest(ObservableList<Question> rawTest) {
         test = rawTest;
-    }
+    }*/
 //-------------BUTTONS---------------------------------------
     public void onBtnCancelHandle(ActionEvent actionEvent) {
         Stage stage = (Stage)btnCancel.getScene().getWindow();
@@ -71,7 +70,7 @@ public class TestViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         WebEngine engine = webView.getEngine();
-        engine.loadContent(makeTest(test));
+        engine.loadContent(makeTest(RawTest.getQuestions()));
     }
 
     private String makeTest(ObservableList<Question> rawTest){
@@ -122,9 +121,16 @@ public class TestViewController implements Initializable {
                 }
                 printableTest += "</ol>";
             }
-            Collections.shuffle(test);
+            RawTest.shuffle();
         }
-        printableTest = printableTest + "<p>Ответы</p>" + key+"</body></html>";
+        printableTest = printableTest + "<p>Ответы</p>" + key;
+        printableTest += "<p>ЗАДАЧИ</p>";
+        for (int i = 0; i < RawTest.getTasks().size(); i++){
+            printableTest += "<p>"+RawTest.getTasks().get(i).getNameTask()+"</p>";
+            printableTest += "<p>"+ RawTest.getTasks().get(i).getAnswer()+"</p>";
+        }
+        printableTest += "</body></html>";
+
         return printableTest;
     }
 }

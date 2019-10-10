@@ -64,13 +64,13 @@ public class TestSetupController implements Initializable {
                     }
                     test.add(new Question(idQuestion, idTopic, nameQuestion, answers));
                     answers.clear();
+                    RawTest.setQuestions(test);
                 }
             }catch(SQLException e){
                 Alerts.Error(e.getMessage());
             }
         }
-        Collections.shuffle(test);
-        TestViewController.setTest(test);
+        RawTest.shuffle();
         TestViewController.setNumQuestions(Integer.parseInt(tfQuestions.getText()));
         TestViewController.setNumVariants(Integer.parseInt(tfVariants.getText()));
         
@@ -157,6 +157,19 @@ public class TestSetupController implements Initializable {
     public void vPlusHandle(ActionEvent actionEvent){
         int count = Integer.parseInt(tfVariants.getText());
         count++;
-        tfQuestions.setText(String.valueOf(count));
+        tfVariants.setText(String.valueOf(count));
+    }
+
+    public void onAddTaskHandle(ActionEvent actionEvent) throws IOException{
+        ObservableList<Item> tasks = FXCollections.observableArrayList(lvTopicsToTest.getSelectionModel().getSelectedItems());
+        AddTaskController.setTopic(tasks);
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/AddTaskFrm.fxml"));
+        stage.setTitle("Вставить задачи");
+        stage.setResizable(false);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 }

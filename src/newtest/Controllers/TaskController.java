@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import newtest.Classes.Alerts;
 import newtest.Classes.DB;
@@ -28,6 +29,9 @@ public class TaskController implements Initializable {
     TextField tfAnswer;
     @FXML
     ListView lvTasks;
+    @FXML
+    Label lbAnswer;
+
     private ObservableList<Item> subjects = FXCollections.observableArrayList();
     private ObservableList<Item> topics = FXCollections.observableArrayList();
 
@@ -49,6 +53,12 @@ public class TaskController implements Initializable {
             Alerts.Error("Необходимо ввести правильный ответ!");
             return;
         }
+        int idTopic = ((Item)cbTopic.getValue()).getIdOwn();
+        DB.Insert("tasks", "idTopic, nameTask, answer",
+            idTopic+"\", \""+taTask.getText()+"\", \""+tfAnswer.getText());
+        taTask.clear();
+        tfAnswer.clear();
+        setLvTasks(((Item)cbTopic.getValue()).getIdOwn());
     }
 
     public void onCancelHandle(ActionEvent actionEvent) {
@@ -97,5 +107,25 @@ public class TaskController implements Initializable {
         }catch (SQLException e){
             Alerts.Error(e.getMessage());
         }
+    }
+
+    public void onUpdateHandle(ActionEvent actionEvent) {
+        if (taTask.getText().isEmpty()) {
+            Alerts.Error("Чтобы обновить условие задачи оно должно быть введено!");
+            return;
+        }
+        if (tfAnswer.getText().isEmpty()){
+            Alerts.Error("Необходимо ввести правильный ответ!");
+            return;
+        }
+        DB.Update("tasks", "nameTask = \""+taTask.getText()+"\", answer = \""+tfAnswer.getText()+"\"",
+                "idTask = "+((Task)lvTasks.getSelectionModel().getSelectedItem()).getIdTask());
+    }
+
+    public void onLvEntered(MouseEvent mouseEvent) {
+        taTask.setText(((Task)lvTasks.getSelectionModel().getSelectedItem()).getNameTask());
+        String ans = ((Task)lvTasks.getSelectionModel().getSelectedItem()).getAnswer();
+        tfAnswer.setText(ans);
+        lbAnswer.setText(ans);
     }
 }
