@@ -87,10 +87,12 @@ public class TestViewController implements Initializable {
                 "</style>" +
                 "<style>.column{" +
                 "column-count: 2; column-gap: 30px;}" +
+                "</style><style media = \"print\">" +
+                "@page{size: landscape;}.test{page-break-after: always}" +
                 "</style></head><body><div class=\"column\">";
         for (int i = 0; i < numVariants; i++){
             int v = i+1;
-            printableTest += "<p>Вариант № "+ v +"</p>";
+            printableTest += "<div class=\"test\"><p>Вариант № "+ v +"</p>";
             key += "<p>Вариант № "+v+"</p>";
             for (int k = 0; k < numQuestions; k++){
                 int nq = k+1;
@@ -122,8 +124,10 @@ public class TestViewController implements Initializable {
                         key += "</p>";
                         break;
                 }
+                //---------Вставка задач по вариантам-----------------------
                 printableTest += "</ol>";
             }
+            printableTest+="</div>";
             RawTest.shuffle();
         }
         printableTest = printableTest + "<p>Ответы</p>" + key;
