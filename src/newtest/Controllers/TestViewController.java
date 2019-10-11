@@ -84,7 +84,10 @@ public class TestViewController implements Initializable {
                 "li:nth-child(4)::before { content: 'г)'; }"+
                 "li:nth-child(5)::before { content: 'д)'; }"+
                 "li:nth-child(6)::before { content: 'е)'; }"+
-                "</style></head><body>";
+                "</style>" +
+                "<style>.column{" +
+                "column-count: 2; column-gap: 30px;}" +
+                "</style></head><body><div class=\"column\">";
         for (int i = 0; i < numVariants; i++){
             int v = i+1;
             printableTest += "<p>Вариант № "+ v +"</p>";
@@ -129,7 +132,7 @@ public class TestViewController implements Initializable {
             printableTest += "<p>"+RawTest.getTasks().get(i).getNameTask()+"</p>";
             printableTest += "<p>"+ RawTest.getTasks().get(i).getAnswer()+"</p>";
         }
-        printableTest += "</body></html>";
+        printableTest += "</div></body></html>";
 
         return printableTest;
     }

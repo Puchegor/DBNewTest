@@ -46,7 +46,7 @@ public class MainWindowController implements Initializable {
     CheckBox cbIsTrue;
     @FXML
     Button btnAddAnswer, btnDelete;
-    TreeItem<Item> selectedItem;
+    private TreeItem<Item> selectedItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -109,7 +109,7 @@ public class MainWindowController implements Initializable {
             treeView.setShowRoot(false);
             treeView.setEditable(true);
             treeView.setCellFactory((Callback<TreeView<Item>, TreeCell<Item>>) param -> new textFieldTreeCell());
-            expandTreeView(selectedItem);
+            //expandTreeView(selectedItem);
         }
         catch (SQLException e){
             Alerts.Error(e.getMessage());
@@ -117,7 +117,7 @@ public class MainWindowController implements Initializable {
         }
     }
 
-    private void expandTreeView (TreeItem<Item> selectedItem){
+    /*private void expandTreeView (TreeItem<Item> selectedItem){
         if (selectedItem != null && !selectedItem.isLeaf()){
             selectedItem.setExpanded(true);
             TreeItem<Item> parent = selectedItem.getParent();
@@ -126,12 +126,7 @@ public class MainWindowController implements Initializable {
                 parent = parent.getParent();
             }
         }
-        /*if (selectedItem != null){
-            expandTreeView(selectedItem.getParent());
-            if (!selectedItem.isLeaf())
-                selectedItem.setExpanded(true);
-        }*/
-    }
+    }*/
 
     public void AddSubjectHandle(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
@@ -142,7 +137,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        buildTree(selectedItem);
+        //buildTree(selectedItem);
     }
 
     public void AddTopicHandle(ActionEvent actionEvent) throws IOException{
@@ -156,7 +151,7 @@ public class MainWindowController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
 
         stage.showAndWait();
-        buildTree(selectedItem);
+        //buildTree(selectedItem);
     }
 
     public void AddQuestionHandle(ActionEvent actionEvent) throws IOException {
@@ -168,7 +163,7 @@ public class MainWindowController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        buildTree(selectedItem);
+        //buildTree(selectedItem);
     }
 
     public void OnTreeViewEntered(MouseEvent mouseEvent) {
@@ -361,7 +356,7 @@ public class MainWindowController implements Initializable {
                 break;
 
         }
-        buildTree(selection.getSelectedItem().getParent());
+        //buildTree(selection.getSelectedItem().getParent());
     }
 
     public void OnMniExport(ActionEvent actionEvent) throws IOException {

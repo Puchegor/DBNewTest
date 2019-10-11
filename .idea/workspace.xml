@@ -6,18 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="03/10/2019 23;22 Lenovo">
-      <change afterPath="$PROJECT_DIR$/src/newtest/Classes/RawTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/newtest/Controllers/AddTaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/newtest/FXML/AddTaskFrm.fxml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="10.10.2019 13:44 - Lenovo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/TestSetupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/TestSetupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/newtest/Controllers/TestViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/Controllers/TestViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/FXML/TaskFrm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/FXML/TaskFrm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/newtest/FXML/TestSetupFrm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/newtest/FXML/TestSetupFrm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.sq3" beforeDir="false" afterPath="$PROJECT_DIR$/test.sq3" afterDir="false" />
     </list>
     <list id="234f62a0-3384-4d27-86ef-563346e12ce2" name="05.08 on Lenovo" comment="" />
     <list id="7b765e39-4d64-4ab2-afee-bb3f457f5950" name="06.08 on Lenovo" comment="" />
@@ -86,58 +78,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="246" column="40" selection-start-line="246" selection-start-column="40" selection-end-line="246" selection-end-column="40" />
+            <state relative-caret-position="119">
+              <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/TestSetupController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newtest/Classes/RawTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#382#383#0" expanded="true" />
-                <element signature="e#427#428#0" expanded="true" />
-                <element signature="e#490#491#0" expanded="true" />
-                <element signature="e#527#528#0" expanded="true" />
-                <element signature="e#588#589#0" expanded="true" />
-                <element signature="e#620#621#0" expanded="true" />
-                <element signature="e#673#674#0" expanded="true" />
-                <element signature="e#701#702#0" expanded="true" />
-                <element signature="e#771#772#0" expanded="true" />
-                <element signature="e#797#798#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/AddTaskController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#408#409#0" expanded="true" />
-                <element signature="e#437#438#0" expanded="true" />
+                <element signature="e#10378#11024#0" expanded="true" />
+                <element signature="e#11023#11024#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -146,29 +92,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/TestViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-758">
-              <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+            <state relative-caret-position="194">
+              <caret line="134" column="32" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/TaskController.java">
+        <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewTopicController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="94" column="32" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="32" />
+            <state>
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/newtest/Classes/Task.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -178,6 +114,20 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="111">
               <caret line="70" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewQuestionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="57" column="48" lean-forward="true" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3273#3274#0" expanded="true" />
+                <element signature="e#3296#3297#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -227,11 +177,11 @@
         <option value="$PROJECT_DIR$/src/newtest/Classes/DB.java" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/Task.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/TaskController.java" />
-        <option value="$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/newtest/FXML/AddTaskFrm.fxml" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/AddTaskController.java" />
         <option value="$PROJECT_DIR$/src/newtest/Classes/RawTest.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/TestSetupController.java" />
+        <option value="$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java" />
         <option value="$PROJECT_DIR$/src/newtest/Controllers/TestViewController.java" />
       </list>
     </option>
@@ -537,7 +487,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570134218498</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="10.10.2019 13:44 - Lenovo">
+      <created>1570704309797</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1570704309801</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -664,7 +621,8 @@
     <MESSAGE value="fixup! 27.07.2019 22:25 on Lenovo" />
     <MESSAGE value="30.09.2019 00:00 Lenovo" />
     <MESSAGE value="03/10/2019 23;22 Lenovo" />
-    <option name="LAST_COMMIT_MESSAGE" value="03/10/2019 23;22 Lenovo" />
+    <MESSAGE value="10.10.2019 13:44 - Lenovo" />
+    <option name="LAST_COMMIT_MESSAGE" value="10.10.2019 13:44 - Lenovo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -764,16 +722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="89" selection-start-line="14" selection-start-column="89" selection-end-line="14" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewTopicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -930,18 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewQuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="93" column="5" selection-start-line="93" selection-start-column="5" selection-end-line="93" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3273#3274#0" expanded="true" />
-            <element signature="e#3296#3297#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/newtest/FXML/AddTaskFrm.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -980,16 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
           <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="246" column="40" selection-start-line="246" selection-start-column="40" selection-end-line="246" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1035,10 +961,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewTopicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/NewQuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="57" column="48" lean-forward="true" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3273#3274#0" expanded="true" />
+            <element signature="e#3296#3297#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10378#11024#0" expanded="true" />
+            <element signature="e#11023#11024#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/newtest/Controllers/TestViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-758">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        <state relative-caret-position="194">
+          <caret line="134" column="32" selection-start-line="134" selection-start-column="32" selection-end-line="134" selection-end-column="32" />
         </state>
       </provider>
     </entry>
